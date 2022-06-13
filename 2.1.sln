@@ -1,25 +1,41 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.1", "2.1\2.1.csproj", "{F28D8DFA-CD2C-4574-8AD0-7EE616CE23CE}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F28D8DFA-CD2C-4574-8AD0-7EE616CE23CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F28D8DFA-CD2C-4574-8AD0-7EE616CE23CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F28D8DFA-CD2C-4574-8AD0-7EE616CE23CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F28D8DFA-CD2C-4574-8AD0-7EE616CE23CE}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8F2E6CCD-52EA-4E99-AA82-649F2EEB606A}
-	EndGlobalSection
-EndGlobal
+using System;
+namespace Number1;
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Введите число");
+        int day = int.Parse(Console.ReadLine());
+        Console.WriteLine("Введите месяц");
+        int month = int.Parse(Console.ReadLine());
+        Console.WriteLine("Введите год");
+        int year = int.Parse(Console.ReadLine());
+        if (((year % 4 == 0) && (year % 100 != 0) && (month == 2) && (day <= 29)) ||
+            ((year % 4 == 0) && (year % 100 == 0) && (year % 400 == 0) && (month == 2) && (day <= 29)) ||
+            ((year % 4 != 0) && (month == 2) && (day <= 28)) ||
+                (((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8) || (month == 10) || (month == 12)) && (day <= 31)) ||
+        (((month == 4) || (month == 6) || (month == 9) || (month == 11)) && (day <= 30)))
+        {
+            Console.WriteLine("Дата введена верно!");
+        }
+        else { Console.WriteLine("Дата введена неверно!"); }
+        if (((year % 4 == 0) && (year % 100 != 0)) || ((year % 4 == 0) && (year % 100 == 0) && (year % 400 == 0)))
+        {
+            int[] mas = { 0, 31, 60, 91, 121, 152, 183, 214, 244, 274, 305, 335, 366 };
+            int i = month - 1;
+            int first = mas[i] + day;
+            int last = 366 - first;
+            Console.WriteLine($"С начала года прошло {first} день(дней)");
+            Console.WriteLine($"До окончания года остался(ось) {last} день(дней)");
+        }
+        else
+        {
+            int[] arrayDays = { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
+            int i = month - 1;
+            int first = arrayDays[i] + day;
+            int last = 365 - first;
+            Console.WriteLine($"С начала года прошло {first} день(дней)");
+            Console.WriteLine($"До окончания года остался(ось) {last} день(дней)");
+        }
+    }
+}
