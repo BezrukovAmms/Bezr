@@ -1,25 +1,42 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.2", "2.2\2.2.csproj", "{BD0A17C7-0929-4A27-A915-794638202CF5}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BD0A17C7-0929-4A27-A915-794638202CF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD0A17C7-0929-4A27-A915-794638202CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD0A17C7-0929-4A27-A915-794638202CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD0A17C7-0929-4A27-A915-794638202CF5}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {06853641-B38D-4FE5-BB95-522E8F42FCA6}
-	EndGlobalSection
-EndGlobal
+using System;
+namespace Number1;
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Введите последнее число диапазона:");
+        int last = int.Parse(Console.ReadLine());
+        Console.WriteLine("Введите кол-во попыток");
+        int att = int.Parse(Console.ReadLine());
+        Random Random = new Random();
+        int ran = Random.Next(1, last);
+        for (int i = 0; i <= att; i++)
+        {
+            int v = int.Parse(Console.ReadLine());
+            if (i == att - 1)
+            {
+                Console.WriteLine("К сожеланию, у вас больше нет попыток(");
+                break;
+            }
+            if (v == ran)
+            {
+                Console.WriteLine("Вы угадали!");
+                break;
+            }
+            else if ((v < 1) || (v > last))
+            {
+                Console.WriteLine("Вы ввели число вне диапазона!");
+            }
+            else if (v < ran)
+            {
+                Console.WriteLine("Загаданное число больше");
+            }
+            else if (v > ran)
+            {
+                Console.WriteLine("Загаданное число меньше");
+            }
+        }
+
+    }
+}
+
